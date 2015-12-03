@@ -1,0 +1,7 @@
+# -*- python -*-
+{
+    'schema_name' : 'test_scan',
+    'schema_version' : 0,
+    'aerotech_version' : str
+}
+
