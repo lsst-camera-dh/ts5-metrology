@@ -1,4 +1,4 @@
 #!/usr/bin/env python
 from ccsTools import ccsProducer
 
-ccsProducer('test_scan', 'ccseoflat.py')
+ccsProducer('test_scan', 'ccseotest.py')

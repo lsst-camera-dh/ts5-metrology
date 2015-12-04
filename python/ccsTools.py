@@ -11,7 +11,7 @@ if os.environ.has_key('SIMDIR'):
 else:
     from PythonBinding import CcsJythonInterpreter
 import siteUtils
-import hdrtools
+#import hdrtools
 from DbInterface import DbInterface
 import lcatr.schema
 
@@ -39,7 +39,7 @@ class CcsSetup(OrderedDict):
         self['tsCWD'] = _quote(os.getcwd())
         self['labname'] = _quote(siteUtils.getSiteName())
         self['CCDID'] = _quote(siteUtils.getUnitId())
-        self._read(os.path.join(siteUtils.getJobDir(), configFile))
+#        self._read(os.path.join(siteUtils.getJobDir(), configFile))
         CCDTYPE = _quote(siteUtils.getUnitType())
 
     def _read(self, configFile):
@@ -71,7 +71,8 @@ def ccsProducer(jobName, ccsScript, makeBiasDir=False, verbose=True):
 #    setup = CcsSetup('%s.cfg' % jobName)
 # change to using a single config from the main config directory
     configDir = siteUtils.configDir()
-    setup = CcsSetup('%s/acq.cfg' % configDir )
+#    setup = CcsSetup('%s/acq.cfg' % configDir )
+    setup = CcsSetup(None)
 
     result = ccs.syncScriptExecution(siteUtils.jobDirPath(ccsScript), setup(),
                                      verbose=verbose)
@@ -115,10 +116,10 @@ def ccsTrendingPlots(quantities, outfile_suffix, credentials_file,
         pylab.savefig('%s_%s.png'%(quantity.replace('/', '_'), outfile_suffix))
 
 def ccsValidator(jobName, acqfilelist='acqfilelist', statusFlags=('aero_version')):
-    try:
-        hdrtools.updateFitsHeaders(acqfilelist)
-    except IOError:
-        pass
+#    try:
+#        hdrtools.updateFitsHeaders(acqfilelist)
+#    except IOError:
+#        pass
 
 
     results = []

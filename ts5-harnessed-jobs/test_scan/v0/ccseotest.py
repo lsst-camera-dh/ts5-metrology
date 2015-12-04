@@ -10,11 +10,19 @@ import time
 
 CCS.setThrowExceptions(True);
 
+cdir = tsCWD
+cdir = "/tmp/"
+
+posx = 0.0
+posy = 0.0
+posz = 0.0
+
 try:
 #attach CCS subsystem Devices for scripting
     print "Attaching TS5 subsystems"
     aerosub   = CCS.attachSubsystem("ts5app/Positioner");
 
+    print "getting version"
     result = aerosub.synchCommand(10,"getVersion")
     aerover = result.getResult()
     print "Returned Aerotech Controller version = %s" % aerover
